@@ -1,32 +1,31 @@
 import React from 'react';
 import { TodoCounter } from '../TodoCounter';
+import { TodoContext } from '../TodoContext';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
+import { Modal } from '../Modal';
 
-function AppUI({
-    loading,
-    error,
-    totalTodos,
-    completedTodos,
-    searchValue,
-    setSearchValue,
-    searchedTodos,
-    notFound,
-    completeTodo,
-    deleteTodo,
-  })
+function AppUI()
   {
+     // Desesctructuramos los valores de nuestro contexto
+     const {
+      error,
+      loading,
+      searchedTodos,
+      completeTodo,
+      deleteTodo,
+      notFound,
+      openModal
+    } = React.useContext(TodoContext);
+  
     return(
     <React.Fragment>
-        <TodoCounter
-        total={totalTodos}
-        completed={completedTodos}/>
-        <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}/>
-         {(!loading && searchedTodos.length === 0) && <p>{ notFound}</p>}
+        <TodoCounter/>
+        <TodoSearch/>
+        {(!loading && searchedTodos.length === 0) && <p>{ notFound}</p>}
+
         <TodoList>
             {/* Mostramos un mensaje en caso de que ocurra algún error */}
             {error && <p> Desespérate, hubo un error </p>}
@@ -40,8 +39,14 @@ function AppUI({
             completed={todo.completed}
             onComplete={()=>completeTodo(todo.text)}
             onDelete={()=>deleteTodo(todo.text)}/>))}
-        </TodoList>
+        </TodoList> 
+
+        {!!openModal &&  ( <Modal>
+          <p>{ searchedTodos[0]?.text }</p>
+        </Modal>)}
+        {/* <CreateTodoButton setOpenModal={setOpenModal} /> */}
         <CreateTodoButton/>
+
     </React.Fragment>);
     }
   
