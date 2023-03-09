@@ -22,13 +22,14 @@ function TodoProvider(props){
     const totalTodos = todos.length;
     let searchedTodos = [];
     //todos.filter(todo => todo.text.toLowerCase().includes(searchValue.toLowerCase()))
-    let notFound = `No task with name: ${searchValue}`;
+    let notFound = '';
 
     if(!searchValue.length >= 1){
         searchedTodos = todos
     } 
     else {
         searchedTodos = todos.filter(todo => todo.text.toLowerCase().includes(searchValue.toLowerCase()));
+        notFound = `No task with name: ${searchValue}`;
     }
 
     // const saveTodos = (newTodos) => {

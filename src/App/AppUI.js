@@ -5,8 +5,11 @@ import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { TodoForm } from '../TodoForm';
+import { EmptyTodos } from '../EmptyTodos';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
+import { TodoError } from '../TodoError';
+import { TodoLoading } from '../TodoLoading';
 
 function AppUI()
   {
@@ -29,11 +32,12 @@ function AppUI()
 
         <TodoList>
             {/* Mostramos un mensaje en caso de que ocurra algún error */}
-            {error && <p> Desespérate, hubo un error </p>}
+            {error && <TodoError error={ error } />}
              {/* Mostramos un mensaje de cargando, cuando la aplicación está cargando los datos */}
-            {loading && <p> Estamos cargando, no desesperes </p>}
+            {/* {loading && <TodoLoading/>} */}
+            {loading && new Array(3).fill(1).map((a, i) => <TodoLoading key={i} />)}
             {/* Si terminó de cargar y no existen TODOs, se muestra un mensaje para crear el primer TODO */}
-            {(!loading && !searchedTodos) && <p> Crea tu primer ToDo</p>}
+            {(!loading && !searchedTodos.length) && <EmptyTodos />}
             {searchedTodos.map(todo=>(<TodoItem
             key={todo.text}
             text={todo.text}
