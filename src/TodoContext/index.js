@@ -29,7 +29,7 @@ function TodoProvider(props){
     } 
     else {
         searchedTodos = todos.filter(todo => todo.text.toLowerCase().includes(searchValue.toLowerCase()));
-        notFound = `No task with name: ${searchValue}`;
+        notFound = `No se encontraron tareas que contengan: ${searchValue}`;
     }
 
     // const saveTodos = (newTodos) => {
