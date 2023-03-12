@@ -33,11 +33,11 @@ function AppUI()
         <TodoList>
             {/* Mostramos un mensaje en caso de que ocurra algún error */}
             {error && <TodoError error={ error } />}
-             {/* Mostramos un mensaje de cargando, cuando la aplicación está cargando los datos */}
+            {/* Mostramos un mensaje de cargando, cuando la aplicación está cargando los datos */}
             {/* {loading && <TodoLoading/>} */}
             {loading && new Array(3).fill(1).map((a, i) => <TodoLoading key={i} />)}
             {/* Si terminó de cargar y no existen TODOs, se muestra un mensaje para crear el primer TODO */}
-            {(!loading && !searchedTodos.length) && <EmptyTodos />}
+            {(!loading && !searchedTodos.length && !notFound) && <EmptyTodos />}
             {searchedTodos.map(todo=>(<TodoItem
             key={todo.text}
             text={todo.text}
