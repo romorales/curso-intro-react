@@ -13,7 +13,7 @@ import './TodoSearch.css';
       <div className="TodoSearch"> 
           <input 
             className="TodoSearch-input" 
-            placeholder='Filtrar por nombre de tarea'
+            placeholder='Filtrar'
             value={searchValue}
             onChange={onSearchValueChange}/>
       </div> 
