@@ -33,7 +33,7 @@ function useLocalStorage(itemName, initialValue) {
           // También podemos utilizar la última parte del try/cath (finally) para terminar la carga
           setLoading(false);
         }
-       }, 5000);
+       }, 1000);
     }, [])
    
   
