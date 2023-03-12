@@ -1,6 +1,8 @@
 import React from "react";
 import './CreateTodoButton.css';
 import { TodoContext } from "../TodoContext";
+import { BsX } from "react-icons/bs";
+import { BsPlus } from "react-icons/bs";
 
 function CreateTodoButton(){
     const { openModal, setOpenModal } = React.useContext(TodoContext);
@@ -13,7 +15,7 @@ function CreateTodoButton(){
     return (
      <button 
         className="CreateTodoButton"
-        onClick={ onClickButton }>{ openModal ? 'x' : '+' }</button>
+        onClick={ onClickButton }>{ openModal ? <BsX/> : <BsPlus/> }</button>
     )
 }
 
