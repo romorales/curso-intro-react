@@ -13,9 +13,11 @@ function CreateTodoButton(){
     }
 
     return (
+     <div className="CreateTodoButton-Container">
      <button 
         className="CreateTodoButton"
         onClick={ onClickButton }>{ openModal ? <BsX/> : <BsPlus/> }</button>
+        </div>
     )
 }
 
